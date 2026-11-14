@@ -1,0 +1,130 @@
+name: 🐞 问题反馈
+description: 崩溃、报错、功能异常——某个功能没有按预期工作
+title: "[Bug] "
+labels: ["bug", "待确认"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        一条 issue 只讲一件事。下面带 **\*** 的是必填；信息不全的反馈会挂上 `需要更多信息` 等你补充。
+
+        > 安装、升级、启动失败请用「安装与升级」模板；功能建议请用「功能建议」模板。
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 我已在 [Issues](https://github.com/ushaio/emulsion-feedback/issues?q=is%3Aissue) 里搜索过，没有重复
+          required: true
+        - label: 我已更新到最新版（设置 → 关于 → 检查更新）后仍能复现
+          required: true
+        - label: 我已在 README 的「这些情况通常不是 bug」里看过，不属于那里的情况
+          required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: 版本号
+      description: 设置 → 关于 里可查，形如 v0.9.3
+      placeholder: v0.9.3
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: 系统与架构
+      options:
+        - Windows（x64）
+        - Windows（ARM 设备，运行 x64 版）
+        - macOS（Apple Silicon / arm64）
+        - macOS（Intel / x86-64）
+        - Linux（x64）
+        - Linux（ARM64）
+        - 不确定 / 其他（请在「其他补充」里说明）
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: 诊断摘要
+      description: 设置 → 关于 →「系统运行环境」右上角「复制诊断摘要」，原样粘贴。它比手动写系统信息更可靠。
+      render: text
+      placeholder: |
+        Emulsion Desktop v0.9.3 (Production)
+        OS: Windows (x64)
+        Timestamp: 2026-11-14T09:57:45.000Z
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 发生了什么。一句话说清现象，细节留给下面的步骤。
+      placeholder: 在本地资源库里连续切换两个相册后，右侧信息栏的照片数量显示为 0。
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 按顺序编号写。能稳定复现最好，不能的话说明出现的频率。
+      placeholder: |
+        1. 打开本地资源库，选中相册 A
+        2. 右侧信息栏显示 12 张
+        3. 切到相册 B，再切回相册 A
+        4. 右侧信息栏显示 0 张，但网格里照片还在
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果
+      placeholder: 切回相册 A 时，信息栏继续显示 12 张。
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果
+      description: 有报错文案的话，原文照抄（不要转述）。
+      placeholder: 信息栏显示「共 0 张」，刷新页面后恢复正常。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: 出现频率
+      options:
+        - 每次都能复现
+        - 经常出现
+        - 偶尔出现
+        - 只出现过一次
+    validations:
+      required: true
+
+  - type: textarea
+    id: attachments
+    attributes:
+      label: 截图 / 录屏 / 日志
+      description: |
+        图片和视频可以直接拖进这个输入框。日志默认关闭——需要先在 设置 → 日志 打开「启用日志」，再复现一次，然后把日志目录里的 `logs.json` 拖进来（各系统路径见 README「日志在哪」）。
+        日志里可能含本地路径与站点地址，上传前扫一眼，别带上他人隐私或密钥。
+      placeholder: 把文件拖到这里，或写「无」。
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 其他补充
+      description: 最近装过插件？改过存储源？换过网络或代理？这类背景经常是定位问题的关键。
+    validations:
+      required: false

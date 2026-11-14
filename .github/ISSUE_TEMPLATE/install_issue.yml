@@ -1,0 +1,102 @@
+name: 📦 安装与升级
+description: 安装包下载、安装、首次启动、应用内更新出问题
+title: "[安装] "
+labels: ["bug", "待确认", "安装与升级"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        安装类问题大多集中在三处：下载不完整、系统安全策略拦截、旧版本残留。先把下面填完，能省掉一轮来回。
+
+        > macOS 提示「Emulsion 已损坏，无法打开」和 Windows 提示「已保护你的电脑」，属于已知的系统安全拦截，README 的「这些情况通常不是 bug」里有放行方式，不用提 issue。
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: 卡在哪一步
+      options:
+        - 下载安装包（下载失败 / 速度异常 / 文件不完整）
+        - 安装过程（安装器报错、中途退出）
+        - 首次启动（打不开、闪退、停在初始化）
+        - 应用内更新（检查不到新版本、下载或安装更新失败）
+        - 覆盖安装 / 卸载重装后异常
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: 系统与架构
+      options:
+        - Windows（x64）
+        - Windows（ARM 设备，运行 x64 版）
+        - macOS（Apple Silicon / arm64）
+        - macOS（Intel / x86-64）
+        - Linux（x64）
+        - Linux（ARM64）
+        - 不确定 / 其他（请在补充里说明）
+    validations:
+      required: true
+
+  - type: input
+    id: package
+    attributes:
+      label: 安装包与来源
+      description: 文件名 + 从哪拿的（官网下载页 / 应用内更新 / 别人转发）
+      placeholder: Emulsion-0.9.3-x64-setup.exe，官网下载页
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: 版本号
+      description: 装不上就写安装包版本；已经能打开就写 设置 → 关于 里的版本
+      placeholder: v0.9.3
+    validations:
+      required: true
+
+  - type: textarea
+    id: error
+    attributes:
+      label: 报错原文
+      description: 弹窗、安装器、终端里的原文照抄，不要转述或翻译。截图也可以。
+      render: text
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: tried
+    attributes:
+      label: 已经试过
+      options:
+        - label: 重新下载了一次安装包（最好换个网络或浏览器）
+        - label: 临时关闭了杀毒 / 安全软件再安装
+        - label: 用管理员权限（Windows）或「仍要打开」（macOS）重试过
+        - label: 卸载旧版本后重装过
+        - label: 检查过磁盘剩余空间与安装目录权限
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: 诊断摘要
+      description: 能打开应用的话，设置 → 关于 →「复制诊断摘要」；打不开就跳过。
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: attachments
+    attributes:
+      label: 截图 / 录屏 / 日志
+      description: 报错弹窗的截图最有价值。能进应用的话，按 README「日志在哪」取 `logs.json` 拖进来。
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 其他补充
+      description: 系统版本、是否有代理 / 公司网络 / 安全软件、之前装过哪个版本。
+    validations:
+      required: false

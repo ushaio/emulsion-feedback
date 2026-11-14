@@ -1,0 +1,26 @@
+name: Sync labels
+
+# 标签定义在 .github/labels.yml。改动提交后自动同步；也可以在 Actions 页面手动跑一次。
+# 只新增/更新列出的标签，不会删除仓库里其它既有标签（skip-delete）。
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - .github/labels.yml
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: crazy-max/ghaction-github-labeler@v5
+        with:
+          yaml-file: .github/labels.yml
+          skip-delete: true
+          dry-run: false

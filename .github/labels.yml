@@ -1,0 +1,56 @@
+# 仓库标签定义。
+#
+# 这份文件是标签的唯一来源：改完提交，或在 Actions → Sync labels 手动触发，
+# 工作流会把这里的内容同步到仓库（见 .github/workflows/sync-labels.yml）。
+# 只同步/新增这里列出的标签；未列出的既有标签不会被删除。
+
+# ── 类型 ──
+- name: bug
+  color: d73a4a
+  description: 崩溃、报错、功能异常
+
+- name: enhancement
+  color: a2eeef
+  description: 功能建议与体验改进
+
+- name: question
+  color: d876e3
+  description: 使用咨询
+
+- name: 安装与升级
+  color: c5def5
+  description: 安装包、应用内更新与首次启动相关
+
+# ── 状态 ──
+- name: 待确认
+  color: fbca04
+  description: 已收到，等待确认或复现
+
+- name: 已复现
+  color: 1d76db
+  description: 已稳定复现，进入修复排期
+
+- name: 需要更多信息
+  color: d876e3
+  description: 缺少版本、复现步骤或日志，等待补充
+
+- name: 已修复
+  color: 0e8a16
+  description: 修复已进入某个版本，见 issue 内版本号
+
+- name: 暂不修复
+  color: 6a737d
+  description: 当前不打算处理，原因写在 issue 里
+
+# ── 平台 ──
+- name: "平台: Windows"
+  color: 0075ca
+  description: 仅影响 Windows
+
+- name: "平台: macOS"
+  color: 0075ca
+  description: 仅影响 macOS
+
+- name: "平台: Linux"
+  color: 0075ca
+  description: 仅影响 Linux

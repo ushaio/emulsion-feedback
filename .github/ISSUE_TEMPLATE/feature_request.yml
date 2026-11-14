@@ -1,0 +1,87 @@
+name: 💡 功能建议
+description: 希望 Emulsion 增加、改动或删掉某个能力
+title: "[建议] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        建议类 issue 最容易变成"我想要 X"的一句话。请把**场景**写清楚——我们判断要不要做，看的是场景，不是方案本身。
+
+        > 这里只收产品与体验层面的建议。使用方式的疑问请用「使用咨询」模板。
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 我已在 [Issues](https://github.com/ushaio/emulsion-feedback/issues?q=is%3Aissue) 里搜索过同类建议
+          required: true
+        - label: 我已确认现有版本没有这个能力（必要时看过[文档](https://mo.shaio.top/docs)）
+          required: true
+
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 你在做什么的时候卡住了
+      description: 描述真实的工作流：什么场景、什么素材量、想达成什么。具体到"我每周要把 800 张 RAW 分成三组"比"希望更智能"有用得多。
+      placeholder: |
+        拍完一场婚礼回来有 2000 多张 RAW，我要先按机位分三组再逐组挑片。
+        现在只能在资源库里手动框选，选中之后没法保持这个分组。
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你希望它怎么工作
+      description: 越具体越好；有交互草图的截图也可以直接拖进来。方案可以粗糙，能看出你的预期就行。
+      placeholder: 在资源库里能「另存为分组」，之后按分组筛选，分组本身还能改名和调整顺序。
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: 现在你怎么绕过
+      description: 目前的替代做法，或者为什么现有的做法不够用。这条能帮我们判断优先级。
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: 涉及的功能
+      options:
+        - 本地资源库 / 图库浏览
+        - 上传与存储源（S3 / WebDAV / 云空间）
+        - 图文创作 / 文章
+        - Zine 制作与导出
+        - AI 助手 / AI 生图
+        - 插件与插件市场
+        - 浏览器扩展
+        - 设置、外观与快捷键
+        - 性能与稳定性
+        - 其他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: 影响程度
+      options:
+        - 阻断工作流，现在只能绕道或用别的软件
+        - 明显拖慢效率，每天都会碰到
+        - 体验上的小摩擦，偶尔想到
+        - 锦上添花
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 其他补充
+      description: 参考产品、同类软件的做法、相关资料链接都可以放这里。
+    validations:
+      required: false

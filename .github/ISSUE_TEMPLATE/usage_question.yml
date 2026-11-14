@@ -1,0 +1,43 @@
+name: ❓ 使用咨询
+description: 某个功能怎么用、某个设置是什么意思、遇到不确定的现象
+title: "[咨询] "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        先用 [使用文档](https://mo.shaio.top/docs) 搜一遍关键词——安装、登录、资源库、存储源、插件、Zine 这些都有专页。文档没覆盖到的，再来这里问。
+
+  - type: textarea
+    id: question
+    attributes:
+      label: 你想弄清楚什么
+      description: 直接问，不用铺垫。
+      placeholder: 本地资源库和云空间能同时挂同一个目录吗？会不会重复占磁盘？
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: 相关背景
+      description: 你现在的配置、已经试过的做法、在哪一步不确定。截图也可以。
+    validations:
+      required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: 版本号（可选）
+      description: 设置 → 关于。有些回答跟版本有关。
+      placeholder: v0.9.3
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 我已在 [Issues](https://github.com/ushaio/emulsion-feedback/issues?q=is%3Aissue) 里搜索过类似问题
+          required: true

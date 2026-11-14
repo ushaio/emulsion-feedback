@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 使用文档
+    url: https://mo.shaio.top/docs
+    about: 安装、登录、资源库、插件、Zine 等功能的说明，先在这里找答案。
+  - name: ⬇️ 下载最新版
+    url: https://mo.shaio.top/download
+    about: 各平台安装包都在官网下载页；应用内更新走官方清单，不经过 GitHub。
+  - name: 🔐 报告安全漏洞
+    url: https://github.com/ushaio/emulsion-feedback/security/advisories/new
+    about: 请走私密渠道，不要在公开 issue 里写漏洞细节。
