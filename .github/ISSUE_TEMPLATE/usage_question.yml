@@ -1,35 +1,36 @@
-name: ❓ 使用咨询
-description: 某个功能怎么用、某个设置是什么意思、遇到不确定的现象
+name: ❓ 使用咨询 / Usage question
+description: 某个功能怎么用、某个设置是什么意思 / How a feature works or what a setting does
 title: "[咨询] "
 labels: ["question"]
 body:
   - type: markdown
     attributes:
       value: |
-        先用 [使用文档](https://mo.shaio.top/docs) 搜一遍关键词——安装、登录、资源库、存储源、插件、Zine 这些都有专页。文档没覆盖到的，再来这里问。
+        先用 [使用文档](https://mo.shaio.top/docs) 搜一遍关键词，文档没覆盖到的再来问。
+        Search the [docs](https://mo.shaio.top/docs) first — if it is not covered there, ask here.
 
   - type: textarea
     id: question
     attributes:
-      label: 你想弄清楚什么
-      description: 直接问，不用铺垫。
-      placeholder: 本地资源库和云空间能同时挂同一个目录吗？会不会重复占磁盘？
+      label: 你想弄清楚什么 / What you want to know
+      description: 直接问，不用铺垫 / Just ask
+      placeholder: 本地资源库和云空间能同时挂同一个目录吗？/ Can the local library and cloud space point at the same folder?
     validations:
       required: true
 
   - type: textarea
     id: context
     attributes:
-      label: 相关背景
-      description: 你现在的配置、已经试过的做法、在哪一步不确定。截图也可以。
+      label: 相关背景 / Context
+      description: 当前配置、试过的做法、卡在哪一步 / Your setup, what you tried, where you got stuck
     validations:
       required: false
 
   - type: input
     id: version
     attributes:
-      label: 版本号（可选）
-      description: 设置 → 关于。有些回答跟版本有关。
+      label: 版本号 / Version
+      description: 设置 → 关于，可选 / Settings → About, optional
       placeholder: v0.9.3
     validations:
       required: false
@@ -37,7 +38,7 @@ body:
   - type: checkboxes
     id: checklist
     attributes:
-      label: 提交前确认
+      label: 提交前确认 / Before you submit
       options:
-        - label: 我已在 [Issues](https://github.com/ushaio/emulsion-feedback/issues?q=is%3Aissue) 里搜索过类似问题
+        - label: 已在 Issues 里搜索过类似问题 / I searched existing issues
           required: true

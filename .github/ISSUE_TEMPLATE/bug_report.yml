@@ -1,32 +1,34 @@
-name: 🐞 问题反馈
-description: 崩溃、报错、功能异常——某个功能没有按预期工作
+name: 🐞 问题反馈 / Bug report
+description: 崩溃、报错、功能异常 / Crashes, errors and broken behaviour
 title: "[Bug] "
 labels: ["bug", "待确认"]
 body:
   - type: markdown
     attributes:
       value: |
-        一条 issue 只讲一件事。下面带 **\*** 的是必填；信息不全的反馈会挂上 `需要更多信息` 等你补充。
+        一条 issue 只讲一件事。带 **\*** 的是必填。
+        One issue per report. Fields marked **\*** are required.
 
         > 安装、升级、启动失败请用「安装与升级」模板；功能建议请用「功能建议」模板。
+        > Use **安装与升级 / Install & update** for installation problems, and **功能建议 / Feature request** for ideas.
 
   - type: checkboxes
     id: checklist
     attributes:
-      label: 提交前确认
+      label: 提交前确认 / Before you submit
       options:
-        - label: 我已在 [Issues](https://github.com/ushaio/emulsion-feedback/issues?q=is%3Aissue) 里搜索过，没有重复
+        - label: 已在 Issues 里搜索过，没有重复 / I searched existing issues first
           required: true
-        - label: 我已更新到最新版（设置 → 关于 → 检查更新）后仍能复现
+        - label: 已更新到最新版后仍能复现 / Still reproduces on the latest version
           required: true
-        - label: 我已在 README 的「这些情况通常不是 bug」里看过，不属于那里的情况
+        - label: 已看过 README 的「几种常见情况」/ I checked the common cases in the README
           required: true
 
   - type: input
     id: version
     attributes:
-      label: 版本号
-      description: 设置 → 关于 里可查，形如 v0.9.3
+      label: 版本号 / Version
+      description: 设置 → 关于 / Settings → About
       placeholder: v0.9.3
     validations:
       required: true
@@ -34,23 +36,23 @@ body:
   - type: dropdown
     id: platform
     attributes:
-      label: 系统与架构
+      label: 系统与架构 / OS and architecture
       options:
         - Windows（x64）
-        - Windows（ARM 设备，运行 x64 版）
+        - Windows（ARM 设备，运行 x64 版 / ARM device running the x64 build）
         - macOS（Apple Silicon / arm64）
         - macOS（Intel / x86-64）
         - Linux（x64）
         - Linux（ARM64）
-        - 不确定 / 其他（请在「其他补充」里说明）
+        - 不确定 / Not sure
     validations:
       required: true
 
   - type: textarea
     id: diagnostics
     attributes:
-      label: 诊断摘要
-      description: 设置 → 关于 →「系统运行环境」右上角「复制诊断摘要」，原样粘贴。它比手动写系统信息更可靠。
+      label: 诊断摘要 / Diagnostics
+      description: 设置 → 关于 →「复制诊断摘要」，原样粘贴 / Settings → About → copy diagnostics, paste as-is
       render: text
       placeholder: |
         Emulsion Desktop v0.9.3 (Production)
@@ -62,69 +64,66 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: 问题描述
-      description: 发生了什么。一句话说清现象，细节留给下面的步骤。
-      placeholder: 在本地资源库里连续切换两个相册后，右侧信息栏的照片数量显示为 0。
+      label: 问题描述 / What happened
+      description: 一句话说清现象，细节留给下面的步骤 / One or two sentences
+      placeholder: 切换相册后，右侧信息栏的照片数显示为 0。/ The photo count shows 0 after switching albums.
     validations:
       required: true
 
   - type: textarea
     id: steps
     attributes:
-      label: 复现步骤
-      description: 按顺序编号写。能稳定复现最好，不能的话说明出现的频率。
+      label: 复现步骤 / Steps to reproduce
+      description: 按顺序编号；不能稳定复现的话说明频率 / Number the steps; note the frequency if it is intermittent
       placeholder: |
         1. 打开本地资源库，选中相册 A
-        2. 右侧信息栏显示 12 张
-        3. 切到相册 B，再切回相册 A
-        4. 右侧信息栏显示 0 张，但网格里照片还在
+        2. 切到相册 B，再切回 A
+        3. 右侧信息栏显示 0 张
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: 期望结果
-      placeholder: 切回相册 A 时，信息栏继续显示 12 张。
+      label: 期望结果 / Expected result
+      placeholder: 切回相册 A 时继续显示 12 张。/ Still shows 12 photos when switching back.
     validations:
       required: true
 
   - type: textarea
     id: actual
     attributes:
-      label: 实际结果
-      description: 有报错文案的话，原文照抄（不要转述）。
-      placeholder: 信息栏显示「共 0 张」，刷新页面后恢复正常。
+      label: 实际结果 / Actual result
+      description: 有报错文案就照抄原文 / Copy error text verbatim
     validations:
       required: true
 
   - type: dropdown
     id: frequency
     attributes:
-      label: 出现频率
+      label: 出现频率 / Frequency
       options:
-        - 每次都能复现
-        - 经常出现
-        - 偶尔出现
-        - 只出现过一次
+        - 每次都能复现 / Always
+        - 经常出现 / Often
+        - 偶尔出现 / Sometimes
+        - 只出现过一次 / Once
     validations:
       required: true
 
   - type: textarea
     id: attachments
     attributes:
-      label: 截图 / 录屏 / 日志
+      label: 截图 / 录屏 / 日志 · Screenshots and logs
       description: |
-        图片和视频可以直接拖进这个输入框。日志默认关闭——需要先在 设置 → 日志 打开「启用日志」，再复现一次，然后把日志目录里的 `logs.json` 拖进来（各系统路径见 README「日志在哪」）。
-        日志里可能含本地路径与站点地址，上传前扫一眼，别带上他人隐私或密钥。
-      placeholder: 把文件拖到这里，或写「无」。
+        文件可以直接拖进这个输入框。日志默认关闭，需要先在 设置 → 日志 打开「启用日志」，再复现一次，然后附上 `logs.json`（路径见 README）。
+        Drag files into this box. Logging is off by default — enable it in Settings → Logs, reproduce once, then attach `logs.json` (paths in the README).
     validations:
       required: false
 
   - type: textarea
     id: extra
     attributes:
-      label: 其他补充
-      description: 最近装过插件？改过存储源？换过网络或代理？这类背景经常是定位问题的关键。
+      label: 其他补充 / Anything else
+      description: 最近装过插件、改过存储源、换过网络或代理？这类背景经常是定位问题的关键。/ Recent plugins, storage changes, proxy or network switches — these often matter.
     validations:
       required: false

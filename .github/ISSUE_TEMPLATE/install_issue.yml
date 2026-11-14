@@ -1,57 +1,59 @@
-name: 📦 安装与升级
-description: 安装包下载、安装、首次启动、应用内更新出问题
+name: 📦 安装与升级 / Install & update
+description: 下载、安装、首次启动、应用内更新出问题 / Download, install, first launch and update problems
 title: "[安装] "
 labels: ["bug", "待确认", "安装与升级"]
 body:
   - type: markdown
     attributes:
       value: |
-        安装类问题大多集中在三处：下载不完整、系统安全策略拦截、旧版本残留。先把下面填完，能省掉一轮来回。
+        安装类问题大多集中在三处：下载不完整、系统安全策略拦截、旧版本残留。
+        Most install problems come down to an incomplete download, OS security blocking, or leftovers from an older version.
 
-        > macOS 提示「Emulsion 已损坏，无法打开」和 Windows 提示「已保护你的电脑」，属于已知的系统安全拦截，README 的「这些情况通常不是 bug」里有放行方式，不用提 issue。
+        > macOS 提示「Emulsion 已损坏」和 Windows 提示「已保护你的电脑」属于系统安全拦截，README 里有放行方式，不用提 issue。
+        > macOS "Emulsion is damaged" and Windows SmartScreen are known OS blocks — the README has the workaround.
 
   - type: dropdown
     id: stage
     attributes:
-      label: 卡在哪一步
+      label: 卡在哪一步 / Where it fails
       options:
-        - 下载安装包（下载失败 / 速度异常 / 文件不完整）
-        - 安装过程（安装器报错、中途退出）
-        - 首次启动（打不开、闪退、停在初始化）
-        - 应用内更新（检查不到新版本、下载或安装更新失败）
-        - 覆盖安装 / 卸载重装后异常
+        - 下载安装包 / Downloading
+        - 安装过程 / Installing
+        - 首次启动 / First launch
+        - 应用内更新 / In-app update
+        - 覆盖安装或重装后异常 / After overwrite or reinstall
     validations:
       required: true
 
   - type: dropdown
     id: platform
     attributes:
-      label: 系统与架构
+      label: 系统与架构 / OS and architecture
       options:
         - Windows（x64）
-        - Windows（ARM 设备，运行 x64 版）
+        - Windows（ARM 设备，运行 x64 版 / ARM device running the x64 build）
         - macOS（Apple Silicon / arm64）
         - macOS（Intel / x86-64）
         - Linux（x64）
         - Linux（ARM64）
-        - 不确定 / 其他（请在补充里说明）
+        - 不确定 / Not sure
     validations:
       required: true
 
   - type: input
     id: package
     attributes:
-      label: 安装包与来源
-      description: 文件名 + 从哪拿的（官网下载页 / 应用内更新 / 别人转发）
-      placeholder: Emulsion-0.9.3-x64-setup.exe，官网下载页
+      label: 安装包与来源 / Installer and source
+      description: 文件名 + 从哪拿的 / File name and where you got it
+      placeholder: Emulsion-0.9.3-x64-setup.exe，官网下载页 / from the download page
     validations:
       required: true
 
   - type: input
     id: version
     attributes:
-      label: 版本号
-      description: 装不上就写安装包版本；已经能打开就写 设置 → 关于 里的版本
+      label: 版本号 / Version
+      description: 装不上就写安装包版本 / The installer version if the app never starts
       placeholder: v0.9.3
     validations:
       required: true
@@ -59,8 +61,8 @@ body:
   - type: textarea
     id: error
     attributes:
-      label: 报错原文
-      description: 弹窗、安装器、终端里的原文照抄，不要转述或翻译。截图也可以。
+      label: 报错原文 / Error output
+      description: 弹窗、安装器或终端里的原文照抄，不要转述 / Copy verbatim, do not paraphrase
       render: text
     validations:
       required: true
@@ -68,19 +70,19 @@ body:
   - type: checkboxes
     id: tried
     attributes:
-      label: 已经试过
+      label: 已经试过 / Already tried
       options:
-        - label: 重新下载了一次安装包（最好换个网络或浏览器）
-        - label: 临时关闭了杀毒 / 安全软件再安装
-        - label: 用管理员权限（Windows）或「仍要打开」（macOS）重试过
-        - label: 卸载旧版本后重装过
-        - label: 检查过磁盘剩余空间与安装目录权限
+        - label: 重新下载过安装包 / Re-downloaded the installer
+        - label: 临时关闭杀毒或安全软件 / Temporarily disabled antivirus
+        - label: 用管理员权限（Windows）或「仍要打开」（macOS）重试过 / Retried as administrator or with "Open anyway"
+        - label: 卸载旧版本后重装过 / Uninstalled the old version first
+        - label: 检查过磁盘空间与目录权限 / Checked disk space and folder permissions
 
   - type: textarea
     id: diagnostics
     attributes:
-      label: 诊断摘要
-      description: 能打开应用的话，设置 → 关于 →「复制诊断摘要」；打不开就跳过。
+      label: 诊断摘要 / Diagnostics
+      description: "能打开应用的话，设置 → 关于 →「复制诊断摘要」/ If the app opens, use Settings → About → copy diagnostics"
       render: text
     validations:
       required: false
@@ -88,15 +90,15 @@ body:
   - type: textarea
     id: attachments
     attributes:
-      label: 截图 / 录屏 / 日志
-      description: 报错弹窗的截图最有价值。能进应用的话，按 README「日志在哪」取 `logs.json` 拖进来。
+      label: 截图 / 录屏 / 日志 · Screenshots and logs
+      description: 报错弹窗的截图最有价值 / A screenshot of the error dialog helps most
     validations:
       required: false
 
   - type: textarea
     id: extra
     attributes:
-      label: 其他补充
-      description: 系统版本、是否有代理 / 公司网络 / 安全软件、之前装过哪个版本。
+      label: 其他补充 / Anything else
+      description: 系统版本、代理或公司网络、之前装过哪个版本 / OS version, proxy or corporate network, previous version
     validations:
       required: false
